@@ -22,14 +22,6 @@ mongoose
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 
-// Serve React frontend in production
-const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "../frontend/build")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
-});
-
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
